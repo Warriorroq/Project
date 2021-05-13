@@ -3,7 +3,9 @@ using SFML.Graphics;
 using SFML.System;
 using Project.Game.AeroHokey;
 using Project.Game.DRAW;
+using Project.Game.Zomb;
 using Project.Debug;
+using Project.Game.Components.Graph;
 namespace Project.Game
 {
     public class Game : GameLoop
@@ -17,7 +19,9 @@ namespace Project.Game
         }
         public override void Init()
         {
+            GraphMaps.Init();
             currentScene.Init();
+            CreateZomb();
             //CreateHokey();
             //CreateDrawer();
         }
@@ -37,6 +41,11 @@ namespace Project.Game
         }
         private void DebugFPS()
             => Debug($"FPS:{1 / gameTime.deltaTime:0.00}");
+        private void CreateZomb()
+        {
+            var gameObject = new Zombie(currentScene);
+            currentScene.Add(gameObject);
+        }
         private void CreateDrawer()
         {
             var gameObject = new Drawer(currentScene);

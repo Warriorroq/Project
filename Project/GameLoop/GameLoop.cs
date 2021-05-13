@@ -7,7 +7,6 @@ namespace Project
     public abstract class GameLoop
     {
         public const int FPS = 145;
-        public const float updateTime = 1f / FPS;
         public Timer gameTime;
         protected GameLoop(string nameOfTheWindow)
         {
@@ -20,7 +19,7 @@ namespace Project
 
             LoadContent();
             Init();
-            gameTime.Init(updateTime);
+            gameTime.Init(FPS);
             while (Screen.window.IsOpen) {
                 Screen.window.DispatchEvents();
                 if (gameTime.IsUpdate()) {

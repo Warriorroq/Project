@@ -25,9 +25,8 @@ namespace Project
             _clock = new Clock();
             repeatActions = new();
         }
-        public void Init(float updateTime)
-            =>_updateTime = updateTime;
-        
+        public void Init(float updates)
+            =>_updateTime = 1f/updates;
         public bool IsUpdate()
         {
             _totalTimeBeforeUpdate += TotalTimeElapsed - _previosTimeElapsed;
