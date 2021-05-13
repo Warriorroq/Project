@@ -4,19 +4,19 @@ namespace Project.Game.Components.Graph
 {
     public class Dijkstra
     {
-        private Graph graph;
+        private Graph _graph;
 
-        private List<GraphVertexInfo> infos;
+        private List<GraphVertexInfo> _infos;
         public Dijkstra(Graph graph)
         {
-            this.graph = graph;
+            this._graph = graph;
             InitInfo();
         }
         public GraphVertex FindNearestVertex(Vector2f position)
         {
-            var vertex = infos[0].Vertex;
+            var vertex = _infos[0].Vertex;
             float lastDistance = float.MaxValue;
-            foreach (var graph in infos)
+            foreach (var graph in _infos)
             {
                 if(graph.Vertex != vertex)
                 {
@@ -32,15 +32,15 @@ namespace Project.Game.Components.Graph
         }
         private void InitInfo()
         {
-            infos = new List<GraphVertexInfo>();
-            foreach (var v in graph.Vertices)
+            _infos = new List<GraphVertexInfo>();
+            foreach (var v in _graph.Vertices)
             {
-                infos.Add(new GraphVertexInfo(v));
+                _infos.Add(new GraphVertexInfo(v));
             }
         }
         private GraphVertexInfo GetVertexInfo(GraphVertex v)
         {
-            foreach (var i in infos)
+            foreach (var i in _infos)
             {
                 if (i.Vertex.Equals(v))
                 {
@@ -54,7 +54,7 @@ namespace Project.Game.Components.Graph
         {
             var minValue = float.MaxValue;
             GraphVertexInfo minVertexInfo = null;
-            foreach (var i in infos)
+            foreach (var i in _infos)
             {
                 if (i.IsUnvisited && i.EdgesWeightSum < minValue)
                 {
@@ -67,7 +67,7 @@ namespace Project.Game.Components.Graph
         }
         public List<GraphVertex> FindShortestPath(int startName, int finishName)
         {
-            return FindShortestPath(graph.FindVertex(startName), graph.FindVertex(finishName));
+            return FindShortestPath(_graph.FindVertex(startName), _graph.FindVertex(finishName));
         }
         public List<GraphVertex> FindShortestPath(GraphVertex startVertex, GraphVertex finishVertex)
         {

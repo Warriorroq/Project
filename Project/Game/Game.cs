@@ -20,6 +20,7 @@ namespace Project.Game
         public override void Init()
         {
             GraphMaps.Init();
+            Input.Init(gameTime);
             currentScene.Init();
             CreateZomb();
             //CreateHokey();
@@ -43,6 +44,10 @@ namespace Project.Game
             => Debug($"FPS:{1 / gameTime.deltaTime:0.00}");
         private void CreateZomb()
         {
+            var player = new Player(currentScene);
+            var wall = new Wall(currentScene);
+            currentScene.Add(player);
+            currentScene.Add(wall);
             var gameObject = new Zombie(currentScene);
             currentScene.Add(gameObject);
         }

@@ -19,23 +19,30 @@ namespace Project.Game.Components.Graph
             graph1 = new Graph();
 
             graph1.AddVertex(0, new Vector2f(0, 0));
-            graph1.AddVertex(1, new Vector2f(Screen.widthWindow, 0));
-            graph1.AddVertex(2, new Vector2f(Screen.widthWindow, Screen.widthWindow));
+            graph1.AddVertex(100, new Vector2f(0, 600));
 
-            graph1.AddVertex(5, new Vector2f(100, 400));
-            graph1.AddVertex(3, new Vector2f(0, Screen.heightWindow));
+            //wall
+            graph1.AddVertex(1, new Vector2f(300, 300));
+            graph1.AddVertex(2, new Vector2f(700, 300));
+            graph1.AddVertex(3, new Vector2f(700, 600));
+            graph1.AddVertex(4, new Vector2f(300, 600));
 
-            graph1.AddVertex(4, new Vector2f(Screen.widthWindow / 2f, Screen.widthWindow/2f));
 
-            graph1.AddEdge(4, 0);
-            graph1.AddEdge(4, 1);
-            graph1.AddEdge(4, 2);
-            graph1.AddEdge(4, 3);
-            graph1.AddEdge(0, 1);
-            graph1.AddEdge(5, 3);
-            graph1.AddEdge(0, 5);
+            graph1.AddEdge(1, 2);
+            graph1.AddEdge(1, 4);
             graph1.AddEdge(2, 3);
-            graph1.AddEdge(2, 1);
+            graph1.AddEdge(3, 4);
+
+            //end
+
+
+            graph1.AddEdge(0, 100);
+
+            graph1.AddEdge(0, 1);
+            graph1.AddEdge(0, 2);
+
+            graph1.AddEdge(100, 4);
+            graph1.AddEdge(100, 1);
         }
     }
 }

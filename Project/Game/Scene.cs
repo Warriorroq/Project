@@ -36,6 +36,15 @@ namespace Project.Game
             for (int layer = 0; layer < maxLayer; layer++)
                 _renderComponents[layer].ForEach(x => x.Draw());
         }
+        public T GetObjectOfType<T>() where T : GameObject
+        {
+            foreach(var gObject in _objects)
+            {
+                if (gObject.GetType() == typeof(T))
+                    return gObject as T;
+            }
+            return default(T);
+        }
         public void Add(GameObject obj)
         {
             _objects.Add(obj);
