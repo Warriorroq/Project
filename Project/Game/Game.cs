@@ -59,27 +59,27 @@ namespace Project.Game
         }
         private void CreateHokey()
         {
-            var bg = new Bg(currentScene, new RectangleShape(new Vector2f(Screen.widthWindow, Screen.heightWindow)));
-            currentScene.Add(bg);
             var ball = new Ball(currentScene, new CircleShape(5)
             {
                 FillColor = Color.Blue,
                 Origin = new Vector2f(10, 10) / 2f
             });
             currentScene.Add(ball);
+
             var plate = new Plate(currentScene, new RectangleShape(new Vector2f(20, 100))
             {
                 FillColor = Color.Black
             });
+            currentScene.Add(plate);
 
             var spawner = new Spawner(currentScene);
-            var mine = new Mine();
-            mine.CreateSceneBind(currentScene);
-            mine.position = new Vector2f(-10, -10);
-            spawner.Init(mine);
+
+            var bomb = new Mine(currentScene);
+            bomb.position = new Vector2f(-10, -10);
+            spawner.Init(bomb);
+
             currentScene.Add(spawner);
 
-            currentScene.Add(plate);
             var bot = new PlateBot(currentScene, new RectangleShape(new Vector2f(20, 105))
             {
                 FillColor = Color.Black
