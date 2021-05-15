@@ -11,7 +11,7 @@ namespace Project.Game.Zomb
                 Origin = new Vector2f(20, 20) / 2,
                 FillColor = Color.Blue,
             };
-            AddComponent(new ComponentRender(this, a, scene));
+            AddComponent(new ComponentRender(this, a));
         }
         protected override void OnUpdate()
         {

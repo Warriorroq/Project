@@ -18,7 +18,7 @@ namespace Project.Game.Zomb
                 Origin = new Vector2f(20, 20) / 2,
                 FillColor = Color.Black,
             };
-            AddComponent(new ComponentRender(this, a, scene));
+            AddComponent(new ComponentRender(this, a));
             player = scene.GetObjectOfType<Player>();
             objTimer.InvokeRepeating(() => navigation.FindPath(player.position), 0f, 4f);
             foreach (var obj in navigation.path)

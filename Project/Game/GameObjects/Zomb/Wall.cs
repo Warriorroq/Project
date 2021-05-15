@@ -12,7 +12,7 @@ namespace Project.Game.Zomb
             {
                 FillColor = Color.Black,
             };
-            AddComponent(new ComponentRender(this, a, scene));
+            AddComponent(new ComponentRender(this, a));
         }
     }
 }
