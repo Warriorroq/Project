@@ -21,7 +21,6 @@ namespace Project.Game.AeroHokey
         private void SpawnMine()
         {
             var obj = (_prefab as ICloneable)?.Clone() as GameObject;
-            obj.CreateSceneBind(_scene);
             obj.position = new Vector2f(Game.random.Next(0, (int)Screen.widthWindow), 
                 Game.random.Next(0, (int)Screen.heightWindow));
             _scene.Add(obj);
