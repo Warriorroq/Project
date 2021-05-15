@@ -5,7 +5,7 @@ namespace Project.Game.AeroHokey
     public class Mine : GameObject, ICloneable
     {
         private Scene _scene;
-        public Mine(Scene scene) : base(scene)
+        public Mine(Scene scene)
         {
             _scene = scene;
             AddComponent(new ComponentCollide(this));

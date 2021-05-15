@@ -9,7 +9,7 @@ namespace Project.Game.Zomb
         private Player player;
         private Vector2f direction;
         private Vector2f velocity;
-        public Zombie(Scene scene) : base(scene)
+        public Zombie(Scene scene) : base()
         {
             navigation = new ComponentNavAgent(this);
             AddComponent(navigation);

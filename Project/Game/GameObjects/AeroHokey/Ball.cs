@@ -6,7 +6,7 @@ namespace Project.Game.AeroHokey
     {
         public Vector2f direction;
         public float directionScale;
-        public Ball(Scene scene, Shape shape) : base(scene)
+        public Ball(Scene scene, Shape shape)
         {
             AddComponent(new ComponentCollide(this));
             AddComponent(new ComponentFollowParticlesEffect(this, scene));

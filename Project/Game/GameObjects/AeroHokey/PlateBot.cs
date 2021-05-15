@@ -8,7 +8,7 @@ namespace Project.Game.AeroHokey
         protected float _speed = Screen.heightWindow;
         protected float _deltaSpeed = 10f;
         public float directionScale;
-        public PlateBot(Scene scene, Shape shape) : base(scene)
+        public PlateBot(Shape shape) : base()
         {
             AddComponent(new ComponentCollide(this));
             AddComponent(new ComponentRender(this, shape) { layer = 1 });

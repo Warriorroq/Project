@@ -15,7 +15,7 @@ namespace Project.Game
         public virtual void Draw()
             =>Screen.window.Draw(shape);
         public override object Clone()
-        {
+        {   
             Shape shapeClone = shape as RectangleShape is null ? 
                 (shape as CircleShape).Clone() : (shape as RectangleShape).Clone();
             var clone = new ComponentRender(null, shapeClone);

@@ -4,7 +4,7 @@ namespace Project.Game.Zomb
 {
     public class Player : GameObject
     {
-        public Player(Scene scene) : base(scene)
+        public Player() : base()
         {
             var a = new CircleShape(20)
             {

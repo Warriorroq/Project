@@ -6,11 +6,11 @@ namespace Project.Game.AeroHokey
     {
         private GameObject _prefab;
         private Scene _scene;
-        public Spawner(Scene scene) : base(scene)
+        public Spawner(Scene scene)
         {
             _scene = scene;
         }
-        public void Init(GameObject gameObject)
+        public void InfiniteCreateObjectsStart(GameObject gameObject)
         {
             if(gameObject is ICloneable)
             {

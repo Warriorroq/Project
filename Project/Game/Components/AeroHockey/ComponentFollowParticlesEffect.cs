@@ -14,7 +14,6 @@ namespace Project.Game.AeroHokey
         public void CreateBall()
         {
             _scene.Add(new BallParticle(
-                _scene,
                 new CircleShape(5)
                 {
                     FillColor = Color.Black,

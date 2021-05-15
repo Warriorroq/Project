@@ -5,7 +5,7 @@ namespace Project.Game.AeroHokey
 {
     class BallParticleWithGravity : BallParticle
     {
-        public BallParticleWithGravity(Scene scene, Shape shape, Vector2f position, float liveTime) : base(scene, shape, position, liveTime)
+        public BallParticleWithGravity(Shape shape, Vector2f position, float liveTime) : base(shape, position, liveTime)
         {
             var rigitBody = new ComponentRigidbody(this);
             GetComponent<ComponentRender>().shape.FillColor = Color.Magenta;

@@ -5,7 +5,7 @@ namespace Project.Game.Zomb
 {
     public class Wall : GameObject
     {
-        public Wall(Scene scene) : base(scene)
+        public Wall() : base()
         {
             position = new Vector2f(400, 400);
             var a = new RectangleShape(new Vector2f(200, 200))

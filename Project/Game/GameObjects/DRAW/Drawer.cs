@@ -8,7 +8,7 @@ namespace Project.Game.DRAW
 {
     public class Drawer : GameObject
     {
-        public Drawer(Scene scene) : base(scene)
+        public Drawer(Scene scene) : base()
         {
             Screen.window.MouseMoved += Moved;
             objTimer.Init(40f);

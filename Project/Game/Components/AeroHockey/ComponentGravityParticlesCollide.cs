@@ -20,7 +20,6 @@ namespace Project.Game.AeroHokey
             for (int i = 0; i < particles; i++)
             {
                 scene.Add(new BallParticleWithGravity(
-                    scene,
                     new CircleShape(5)
                         {
                             FillColor = Color.Magenta,

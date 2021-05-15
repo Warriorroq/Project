@@ -1,5 +1,4 @@
 ﻿using SFML.System;
-using SFML.Graphics;
 using System;
 using System.Collections.Generic;
 
@@ -12,16 +11,11 @@ namespace Project.Game
         public event Action<GameObject> Collision;
         public Timer objTimer;
         protected List<Component> _components;
-        public GameObject(Scene scene)
+        public GameObject()
         {
             objTimer = new Timer();
             _components = new List<Component>();
-            if(!(scene is null)) {
-                CreateSceneBind(scene);
-            }
-            else {
-                Destroy = OnDestroy;
-            }
+            Destroy = OnDestroy;
         }
         public void Update()
         {
@@ -70,6 +64,5 @@ namespace Project.Game
         protected virtual void OnSceneBind(Scene scene) {}
         protected virtual void OnDestroy(){}
         protected virtual void OnUpdate(){}
-
     }
 }

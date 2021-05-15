@@ -44,8 +44,8 @@ namespace Project.Game
             => Debug($"FPS:{1 / gameTime.deltaTime:0.00}");
         private void CreateZomb()
         {
-            var player = new Player(currentScene);
-            var wall = new Wall(currentScene);
+            var player = new Player();
+            var wall = new Wall();
             currentScene.Add(player);
             currentScene.Add(wall);
             var gameObject = new Zombie(currentScene);
@@ -59,14 +59,15 @@ namespace Project.Game
         }
         private void CreateHokey()
         {
-            var ball = new Ball(currentScene, new CircleShape(5)
+            var ball = new Ball(currentScene, 
+                new CircleShape(5)
             {
                 FillColor = Color.Blue,
                 Origin = new Vector2f(10, 10) / 2f
             });
             currentScene.Add(ball);
 
-            var plate = new Plate(currentScene, new RectangleShape(new Vector2f(20, 100))
+            var plate = new Plate(new RectangleShape(new Vector2f(20, 100))
             {
                 FillColor = Color.Black
             });
@@ -76,11 +77,11 @@ namespace Project.Game
 
             var bomb = new Mine(currentScene);
             bomb.position = new Vector2f(-10, -10);
-            spawner.Init(bomb);
+            spawner.InfiniteCreateObjectsStart(bomb);
 
             currentScene.Add(spawner);
 
-            var bot = new PlateBot(currentScene, new RectangleShape(new Vector2f(20, 105))
+            var bot = new PlateBot(new RectangleShape(new Vector2f(20, 105))
             {
                 FillColor = Color.Black
             });
