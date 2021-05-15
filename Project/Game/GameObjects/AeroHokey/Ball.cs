@@ -35,6 +35,7 @@ namespace Project.Game.AeroHokey
             }
             if(IsMine(gameObject))
             {
+                GetComponent<ComponentGravityParticlesCollide>().CreateParticles();
                 gameObject.Destroy();
                 directionScale = 0;
                 objTimer.Invoke(ResumeMoving, 2f);

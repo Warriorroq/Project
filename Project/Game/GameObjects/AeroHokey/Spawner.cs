@@ -9,7 +9,7 @@ namespace Project.Game.AeroHokey
         public Spawner(Scene scene) : base(scene)
         {
             _scene = scene;
-            objTimer.InvokeRepeating(SpawnMine,0f,2f);
+            objTimer.InvokeRepeating(SpawnMine,0f,1f);
         }
         public void Init(GameObject gameObject)
         {

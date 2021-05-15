@@ -16,7 +16,7 @@ namespace Project.Game.AeroHokey
         protected override void OnSceneBind(Scene scene)
         {
             _scene = scene;
-            var shape = new CircleShape(10) { FillColor = Color.Red };
+            var shape = new CircleShape(10) { OutlineColor = Color.Red, OutlineThickness = 1f };
             AddComponent(new ComponentRender(this, shape));
         }
         public object Clone()
