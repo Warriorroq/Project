@@ -9,7 +9,7 @@ namespace Project.Game.AeroHokey
         private ComponentRender render;
         public BallParticle(Scene scene, Shape shape, Vector2f position, float liveTime) : base(scene)
         {
-            render = new ComponentRender(this, shape, scene);
+            render = new ComponentRender(this, shape);
             AddComponent(render);
             this.position = position;
             _liveTime = liveTime;

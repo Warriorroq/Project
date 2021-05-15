@@ -6,7 +6,7 @@ namespace Project.Game.AeroHokey
     {
         public Bg(Scene scene, Shape shape) : base(scene)
         {
-            AddComponent(new ComponentRender(this, shape, scene));
+            AddComponent(new ComponentRender(this, shape));
         }
     }
 }

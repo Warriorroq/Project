@@ -10,7 +10,7 @@ namespace Project.Game.AeroHokey
         public PlateBot(Scene scene, Shape shape) : base(scene)
         {
             AddComponent(new ComponentCollide(this));
-            AddComponent(new ComponentRender(this, shape, scene) { layer = 1 });
+            AddComponent(new ComponentRender(this, shape) { layer = 1 });
             position = new Vector2f(1030, 300);
             objTimer.InvokeRepeating(ChangeDirection, 1f, 1f);
         }

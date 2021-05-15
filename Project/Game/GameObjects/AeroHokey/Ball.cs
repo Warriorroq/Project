@@ -10,7 +10,7 @@ namespace Project.Game.AeroHokey
             AddComponent(new ComponentCollide(this));
             AddComponent(new ComponentFollowParticlesEffect(this, scene));
             AddComponent(new ComponentGravityParticlesCollide(this, scene, 40));
-            AddComponent(new ComponentRender(this, shape, scene) { layer = 1 });
+            AddComponent(new ComponentRender(this, shape) { layer = 1 });
             position = new Vector2f(200, 200 + Game.random.Next(50, 200));
             direction = new Vector2f(Game.random.Next(100, 700), Game.random.Next(100,500));
         }

@@ -12,7 +12,7 @@ namespace Project.Game.DRAW
         {
             Screen.window.MouseMoved += Moved;
             objTimer.Init(40f);
-            AddComponent(new ComponentRender(this, new CircleShape(5) { FillColor = Color.Black, Origin = new Vector2f(10, 10) / 2f }, scene) {layer = 2 });
+            AddComponent(new ComponentRender(this, new CircleShape(5) { FillColor = Color.Black, Origin = new Vector2f(10, 10) / 2f }) {layer = 2 });
             AddComponent(new ComponentGravityParticlesCollide(this, scene, 1));
         }
         private void Moved(object sender, MouseMoveEventArgs e)
