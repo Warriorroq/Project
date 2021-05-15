@@ -2,7 +2,6 @@
 using SFML.Graphics;
 using SFML.System;
 using Project.Game.AeroHokey;
-using Project.Game.DRAW;
 using Project.Game.Zomb;
 using Project.Debug;
 using Project.Game.Components.Graph;
@@ -24,7 +23,6 @@ namespace Project.Game
             currentScene.Init();
             //CreateZomb();
             CreateHokey();
-            //CreateDrawer();
         }
         public override void LoadContent()
         {
@@ -38,7 +36,8 @@ namespace Project.Game
         public override void Draw()
         {
             currentScene.Draw();
-            DebugFPS();
+            Debug(currentScene.Count);
+            //DebugFPS();
         }
         private void DebugFPS()
             => Debug($"FPS:{1 / gameTime.deltaTime:0.00}");
@@ -50,12 +49,6 @@ namespace Project.Game
             currentScene.Add(wall);
             var gameObject = new Zombie(currentScene);
             currentScene.Add(gameObject);
-        }
-        private void CreateDrawer()
-        {
-            var gameObject = new Drawer(currentScene);
-            currentScene.Add(gameObject);
-            Screen.window.SetMouseCursorVisible(false);
         }
         private void CreateHokey()
         {
@@ -76,7 +69,6 @@ namespace Project.Game
             var spawner = new Spawner(currentScene);
 
             var bomb = new Mine();
-            bomb.position = new Vector2f(-10, -10);
             spawner.InfiniteCreateObjectsStart(bomb);
 
             currentScene.Add(spawner);

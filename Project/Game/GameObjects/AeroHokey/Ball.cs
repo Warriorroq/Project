@@ -14,11 +14,6 @@ namespace Project.Game.AeroHokey
             position = new Vector2f(200, 200 + Game.random.Next(50, 200));
             direction = new Vector2f(Game.random.Next(100, 700), Game.random.Next(100,500));
         }
-        protected override void OnSceneBind(Scene scene)
-        {
-            AddComponent(new ComponentFollowParticlesEffect(this, scene));
-            AddComponent(new ComponentGravityParticlesCollide(this, scene, 40));
-        }
         protected override void OnUpdate()
         {
             position += direction * objTimer.deltaTime * directionScale;
@@ -32,13 +27,11 @@ namespace Project.Game.AeroHokey
         {
             if (gameObject is Plate || gameObject is PlateBot)
             {
-                GetComponent<ComponentGravityParticlesCollide>().CreateParticles();
                 direction.X *= -1;
                 position.X += direction.X * 2 * objTimer.deltaTime;
             }
             if(IsMine(gameObject))
             {
-                GetComponent<ComponentGravityParticlesCollide>().CreateParticles();
                 gameObject.Destroy();
                 directionScale = 0;
                 objTimer.Invoke(ResumeMoving, 2f);

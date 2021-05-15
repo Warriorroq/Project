@@ -15,7 +15,6 @@ namespace Project.Game
         {
             objTimer = new Timer();
             _components = new List<Component>();
-            Destroy = OnDestroy;
         }
         public void Update()
         {

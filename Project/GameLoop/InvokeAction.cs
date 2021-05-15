@@ -22,7 +22,7 @@ namespace Project
         }
         protected virtual void Invoke()
         {
-            _action.Invoke();
+            _action?.Invoke();
             Destroy();
         }
         public void Destroy()
