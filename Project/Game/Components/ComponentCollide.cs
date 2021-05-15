@@ -14,5 +14,7 @@ namespace Project.Game
         }
         public FloatRect GetBounds(GameObject obj)
             => obj.GetComponent<ComponentRender>().shape.GetGlobalBounds();
+        public override object Clone()
+            => new ComponentCollide(null);
     }
 }

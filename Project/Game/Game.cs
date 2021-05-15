@@ -22,8 +22,8 @@ namespace Project.Game
             GraphMaps.Init();
             Input.Init(gameTime);
             currentScene.Init();
-            CreateZomb();
-            //CreateHokey();
+            //CreateZomb();
+            CreateHokey();
             //CreateDrawer();
         }
         public override void LoadContent()
@@ -71,6 +71,14 @@ namespace Project.Game
             {
                 FillColor = Color.Black
             });
+
+            var spawner = new Spawner(currentScene);
+            var mine = new Mine();
+            mine.CreateSceneBind(currentScene);
+            mine.position = new Vector2f(-10, -10);
+            spawner.Init(mine);
+            currentScene.Add(spawner);
+
             currentScene.Add(plate);
             var bot = new PlateBot(currentScene, new RectangleShape(new Vector2f(20, 105))
             {
