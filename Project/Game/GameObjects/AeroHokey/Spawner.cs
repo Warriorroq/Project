@@ -9,12 +9,14 @@ namespace Project.Game.AeroHokey
         public Spawner(Scene scene) : base(scene)
         {
             _scene = scene;
-            objTimer.InvokeRepeating(SpawnMine,0f,1f);
         }
         public void Init(GameObject gameObject)
         {
             if(gameObject is ICloneable)
+            {
                 _prefab = gameObject;
+                objTimer.InvokeRepeating(SpawnMine, 0f, 1f);
+            }
         }
         private void SpawnMine()
         {
