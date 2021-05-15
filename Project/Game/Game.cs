@@ -59,7 +59,7 @@ namespace Project.Game
         }
         private void CreateHokey()
         {
-            var ball = new Ball(currentScene, 
+            var ball = new Ball(
                 new CircleShape(5)
             {
                 FillColor = Color.Blue,
@@ -75,7 +75,7 @@ namespace Project.Game
 
             var spawner = new Spawner(currentScene);
 
-            var bomb = new Mine(currentScene);
+            var bomb = new Mine();
             bomb.position = new Vector2f(-10, -10);
             spawner.InfiniteCreateObjectsStart(bomb);
 

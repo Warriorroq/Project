@@ -6,15 +6,18 @@ namespace Project.Game.AeroHokey
     {
         public Vector2f direction;
         public float directionScale;
-        public Ball(Scene scene, Shape shape)
+        public Ball(Shape shape)
         {
             AddComponent(new ComponentCollide(this));
-            AddComponent(new ComponentFollowParticlesEffect(this, scene));
-            AddComponent(new ComponentGravityParticlesCollide(this, scene, 40));
             AddComponent(new ComponentRender(this, shape) { layer = 1 });
             directionScale = 1;
             position = new Vector2f(200, 200 + Game.random.Next(50, 200));
             direction = new Vector2f(Game.random.Next(100, 700), Game.random.Next(100,500));
+        }
+        protected override void OnSceneBind(Scene scene)
+        {
+            AddComponent(new ComponentFollowParticlesEffect(this, scene));
+            AddComponent(new ComponentGravityParticlesCollide(this, scene, 40));
         }
         protected override void OnUpdate()
         {

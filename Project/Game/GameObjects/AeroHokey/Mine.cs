@@ -4,17 +4,15 @@ namespace Project.Game.AeroHokey
 {
     public class Mine : GameObject, ICloneable
     {
-        private Scene _scene;
-        public Mine(Scene scene)
+        public Mine()
         {
-            _scene = scene;
             AddComponent(new ComponentCollide(this));
             var shape = new CircleShape(10) { OutlineColor = Color.Red, OutlineThickness = 1f };
             AddComponent(new ComponentRender(this, shape));
         }
         public object Clone()
         {
-            var clone = new Mine(_scene);
+            var clone = new Mine();
             foreach (var component in _components)
             {
                 var newComponent = component.Clone();
