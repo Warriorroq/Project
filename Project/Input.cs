@@ -52,7 +52,6 @@ namespace Project
                 _inputHorizontal = 0;
                 Horisontal = 0;
             }
-            Console.WriteLine(e.Code);
         }
 
         private static void InputKey(object sender, KeyEventArgs e)
