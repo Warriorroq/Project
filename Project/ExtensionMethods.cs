@@ -1,4 +1,5 @@
-﻿using SFML.System;
+﻿using SFML.Graphics;
+using SFML.System;
 using System;
 
 namespace Project
@@ -8,5 +9,7 @@ namespace Project
         public static float Distance(this Vector2f value, Vector2f vector2)
             => MathF.Sqrt(MathF.Pow(vector2.Y - value.Y, 2)
                 + MathF.Pow(vector2.X - value.X, 2));
+        public static CircleShape Clone(this CircleShape shape) => new CircleShape(shape);
+        public static RectangleShape Clone(this RectangleShape shape) => new RectangleShape(shape);
     }
 }

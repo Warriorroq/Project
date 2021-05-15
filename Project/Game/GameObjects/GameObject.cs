@@ -56,8 +56,9 @@ namespace Project.Game
             =>_components?.Remove(GetChildComponent<T>());
         public virtual void OnCollisionWith(GameObject gameObject)
             =>Collision?.Invoke(gameObject);
-        protected void CreateSceneBind(Scene scene)
+        public void CreateSceneBind(Scene scene)
         {
+            OnSceneBind(scene);
             scene.update += Update;
             Destroy = (() => {
                 _components.ForEach(x => x.Destroy());
@@ -66,6 +67,7 @@ namespace Project.Game
                 OnDestroy();
             });
         }
+        protected virtual void OnSceneBind(Scene scene) {}
         protected virtual void OnDestroy(){}
         protected virtual void OnUpdate(){}
 
