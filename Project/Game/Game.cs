@@ -5,24 +5,25 @@ using Project.Game.AeroHokey;
 using Project.Game.Zomb;
 using Project.Debug;
 using Project.Game.Components.Graph;
+using Project.Game.GameObjects.AgarIo;
+using SFML.Window;
+
 namespace Project.Game
 {
     public class Game : GameLoop
     {
-        public static Random random;
         private Scene currentScene;
         public Game() : base("Aero hokey")
         {
-            random = new Random(DateTime.UtcNow.Second + DateTime.UtcNow.Minute * 60);
             currentScene = new Scene(3);
+            Screen.window.KeyPressed += AgarKeyPressed;
         }
         public override void Init()
         {
             GraphMaps.Init();
             Input.Init(gameTime);
             currentScene.Init();
-            //CreateZomb();
-            CreateHokey();
+            CreateAgar();
         }
         public override void LoadContent()
         {
@@ -36,48 +37,30 @@ namespace Project.Game
         public override void Draw()
         {
             currentScene.Draw();
-            Debug(currentScene.Count);
-            //DebugFPS();
+            DebugFPS();
         }
         private void DebugFPS()
             => Debug($"FPS:{1 / gameTime.deltaTime:0.00}");
-        private void CreateZomb()
+        private void AgarKeyPressed(object sender, KeyEventArgs e)
         {
-            var player = new Player();
-            var wall = new Wall();
-            currentScene.Add(player);
-            currentScene.Add(wall);
-            var gameObject = new Zombie(currentScene);
-            currentScene.Add(gameObject);
+            if (e.Code == Keyboard.Key.Space)
+            {
+                currentScene.GetObjectOfType<BigBallPlayer>()?.Destroy();
+                currentScene.Add(new BigBallPlayer());
+            }
         }
-        private void CreateHokey()
+        private void CreateAgar()
         {
-            var ball = new Ball(
-                new CircleShape(5)
-            {
-                FillColor = Color.Blue,
-                Origin = new Vector2f(10, 10) / 2f
-            });
-            currentScene.Add(ball);
+            var foodSpawner = new Spawner(currentScene);
+            foodSpawner.Init(new Food(), .45f);
+            currentScene.Add(foodSpawner);
 
-            var plate = new Plate(new RectangleShape(new Vector2f(20, 100))
-            {
-                FillColor = Color.Black
-            });
-            currentScene.Add(plate);
+            var ballsSpawner = new Spawner(currentScene);
+            ballsSpawner.Init(new BigBallBot(), 7f);
+            currentScene.Add(ballsSpawner);
 
-            var spawner = new Spawner(currentScene);
-
-            var bomb = new Mine();
-            spawner.InfiniteCreateObjectsStart(bomb);
-
-            currentScene.Add(spawner);
-
-            var bot = new PlateBot(new RectangleShape(new Vector2f(20, 105))
-            {
-                FillColor = Color.Black
-            });
-            currentScene.Add(bot);
+            currentScene.Add(new BigBallBot());
+            currentScene.Add(new BigBallPlayer());
         }
     }
 }

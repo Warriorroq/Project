@@ -10,19 +10,19 @@ namespace Project.Game.AeroHokey
         {
             _scene = scene;
         }
-        public void InfiniteCreateObjectsStart(GameObject gameObject)
+        public void Init(GameObject prefab, float time)
         {
-            if(gameObject is ICloneable)
+            if(prefab is ICloneable)
             {
-                _prefab = gameObject;
-                objTimer.InvokeRepeating(SpawnMine, 0f, 1f);
+                _prefab = prefab;
+                objTimer.InvokeRepeating(SpawnObject, 0f, time);
             }
         }
-        private void SpawnMine()
+        private void SpawnObject()
         {
             var obj = (_prefab as ICloneable)?.Clone() as GameObject;
-            obj.position = new Vector2f(Game.random.Next(0, (int)Screen.widthWindow), 
-                Game.random.Next(0, (int)Screen.heightWindow));
+            obj.position = new Vector2f(Program.random.Next(0, (int)Screen.widthWindow),
+                Program.random.Next(0, (int)Screen.heightWindow));
             _scene.Add(obj);
         }
     }

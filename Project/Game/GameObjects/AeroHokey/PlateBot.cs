@@ -14,6 +14,7 @@ namespace Project.Game.AeroHokey
             AddComponent(new ComponentRender(this, shape) { layer = 1 });
             position = new Vector2f(1030, 300);
             directionScale = 1;
+            objTimer.Init(60f);
             objTimer.InvokeRepeating(ChangeDirection, 1f, 1f);
         }
         protected override void OnUpdate()
@@ -28,7 +29,7 @@ namespace Project.Game.AeroHokey
         }
         private void ChangeDirection()
         {
-            if(Game.random.Next(0, 5) < 2)
+            if(Program.random.Next(0, 5) < 2)
                 _deltaSpeed = -_deltaSpeed;
             
             if (_deltaSpeed == 0)

@@ -47,8 +47,8 @@ namespace Project.Game
         }
         public void Add(GameObject obj)
         {
-            _objects.Add(obj);
             obj.CreateSceneBind(this);
+            _objects.Add(obj);
             var render = obj.GetComponent<ComponentRender>();
             if (render is not null)
                 _renderComponents[render.layer].Add(render);

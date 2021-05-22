@@ -11,8 +11,8 @@ namespace Project.Game.AeroHokey
             AddComponent(new ComponentCollide(this));
             AddComponent(new ComponentRender(this, shape) { layer = 1 });
             directionScale = 1;
-            position = new Vector2f(200, 200 + Game.random.Next(50, 200));
-            direction = new Vector2f(Game.random.Next(100, 700), Game.random.Next(100,500));
+            position = new Vector2f(200, 200 + Program.random.Next(50, 200));
+            direction = new Vector2f(Program.random.Next(100, 700), Program.random.Next(100,500));
         }
         protected override void OnUpdate()
         {
