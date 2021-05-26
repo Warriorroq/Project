@@ -41,7 +41,9 @@ namespace Project
             return false;
         }
         public void Invoke(Action action, float startTime)
-            =>new InvokeAction(this, action, startTime);
+            => repeatActions.Add(new InvokeAction(this, action, startTime));
+        public void RemoveInvoke(InvokeAction action)
+            =>repeatActions.Remove(action);
         public void InvokeRepeating(Action action, float startTime, float repeatTime)
             =>repeatActions.Add(new InvokeRepeatingAction(this, action, startTime, repeatTime));
     }

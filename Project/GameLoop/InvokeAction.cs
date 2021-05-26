@@ -16,16 +16,15 @@ namespace Project
         }
         public void Act(float deltaTime)
         {
-            _startTime -= deltaTime;
             if (_startTime <= 0)
                 Invoke();
+            _startTime -= deltaTime;
         }
         protected virtual void Invoke()
         {
             _action?.Invoke();
-            Destroy();
+            _timer.TimeUpdate -= Act;
+            _timer.RemoveInvoke(this);
         }
-        public void Destroy()
-            =>_timer.TimeUpdate -= Act;
     }
 }

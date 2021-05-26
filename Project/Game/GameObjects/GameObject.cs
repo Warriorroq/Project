@@ -54,10 +54,10 @@ namespace Project.Game
             OnSceneBind(scene);
             scene.update += Update;
             Destroy = (() => {
+                OnDestroy();
                 _components.ForEach(x => x.Destroy());
                 scene.Destroy(this);
                 scene.update -= Update;
-                OnDestroy();
             });
         }
         protected virtual void OnSceneBind(Scene scene) {}

@@ -15,5 +15,12 @@ namespace Project
         public static RectangleShape Clone(this RectangleShape shape) => new RectangleShape(shape);
         public static Color CreateRandom(this Color color)
             => new Color(Program.random.NextByte(), Program.random.NextByte(), Program.random.NextByte());
+        public static Vector2f RandomVector(this Random random, Vector2i min, Vector2i max)
+        {
+            Vector2f vector;
+            vector.X = random.Next(min.X, max.X);
+            vector.Y = random.Next(min.Y, max.Y);
+            return vector;
+        }
     }
 }
