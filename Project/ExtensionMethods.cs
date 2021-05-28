@@ -6,9 +6,11 @@ namespace Project
 {
     public static class ExtensionMethods
     {
-        public static float Distance(this Vector2f value, Vector2f vector2)
-            => MathF.Sqrt(MathF.Pow(vector2.Y - value.Y, 2)
-                + MathF.Pow(vector2.X - value.X, 2));
+        public static float Distance(this Vector2f value, Vector2f value2)
+            => MathF.Sqrt(MathF.Pow(value2.Y - value.Y, 2)
+                + MathF.Pow(value2.X - value.X, 2));
+        public static float DistanceWithOutSqrt(this Vector2f value, Vector2f value2)
+            => MathF.Pow(value2.Y - value.Y, 2) + MathF.Pow(value2.X - value.X, 2);
         public static byte NextByte(this Random random)
             => (byte)random.Next(0, 256);
         public static CircleShape Clone(this CircleShape shape) => new CircleShape(shape);

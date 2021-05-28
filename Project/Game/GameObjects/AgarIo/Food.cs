@@ -4,7 +4,7 @@ using SFML.System;
 using Project.Game.Components.Agar;
 namespace Project.Game.GameObjects.AgarIo
 {
-    public class Food : GameObject, ICloneable
+    public class Food : GameObject
     {
         public static int foodCount;
         public Food()
@@ -12,7 +12,7 @@ namespace Project.Game.GameObjects.AgarIo
             var food = new ComponentFoodAbility(this, 1);
             AddComponent(food);
             AddComponent(new ComponentCollide(this));
-            var render = new ComponentRender(this, new CircleShape(10));
+            var render = new ComponentRender(this, new CircleShape(10) {Origin = new Vector2f(10,10) });
             render.shape.FillColor = new Color().CreateRandom();
             AddComponent(render);
         }
@@ -24,7 +24,7 @@ namespace Project.Game.GameObjects.AgarIo
         {
             foodCount--;
         }
-        public object Clone()
+        public virtual object Clone()
         {
             return new Food();
         }
