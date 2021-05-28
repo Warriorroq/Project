@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Project.Game
 {
-    public abstract class GameObject
+    public abstract class GameObject : ICloneable
     {
         public Vector2f position;
         public Action Destroy;
@@ -63,5 +63,19 @@ namespace Project.Game
         protected virtual void OnSceneBind(Scene scene) {}
         protected virtual void OnDestroy(){}
         protected virtual void OnUpdate(){}
+
+        public virtual object Clone()
+        {
+            throw new NotImplementedException();
+        }
+        protected void CloneComponentsToObject(GameObject clone)
+        {
+            foreach (var component in _components)
+            {
+                var newComponent = component.Clone();
+                (newComponent as Component).SetOwner(clone);
+                clone.AddComponent(newComponent as Component);
+            }
+        }
     }
 }

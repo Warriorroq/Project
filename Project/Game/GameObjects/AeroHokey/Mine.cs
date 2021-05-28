@@ -2,7 +2,7 @@
 using SFML.Graphics;
 namespace Project.Game.AeroHokey
 {
-    public class Mine : GameObject, ICloneable
+    public class Mine : GameObject
     {
         public Mine()
         {
@@ -10,15 +10,10 @@ namespace Project.Game.AeroHokey
             var shape = new CircleShape(10) { OutlineColor = Color.Red, OutlineThickness = 1f };
             AddComponent(new ComponentRender(this, shape));
         }
-        public object Clone()
+        public override object Clone()
         {
             var clone = new Mine();
-            foreach (var component in _components)
-            {
-                var newComponent = component.Clone();
-                (newComponent as Component).SetOwner(clone);
-                clone.AddComponent(newComponent as Component);
-            }
+            CloneComponentsToObject(clone);
             return clone;
         }
     }
