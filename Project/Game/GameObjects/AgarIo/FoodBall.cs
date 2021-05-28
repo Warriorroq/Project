@@ -8,7 +8,7 @@ namespace Project.Game.GameObjects.AgarIo
     {
         public FoodBall()
         {
-            position = new Vector2f(0, 100);
+            position = new Vector2f(0, 900);
 
             AddComponent(new ComponentBallLogicMovement(this));
             AddComponent(new ComponentCollide(this));

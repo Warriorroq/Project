@@ -64,17 +64,14 @@ namespace Project.Game
         protected virtual void OnDestroy(){}
         protected virtual void OnUpdate(){}
 
-        public virtual object Clone()
-        {
-            throw new NotImplementedException();
-        }
+        public virtual object Clone() => null;
         protected void CloneComponentsToObject(GameObject clone)
         {
             foreach (var component in _components)
             {
-                var newComponent = component.Clone();
-                (newComponent as Component).SetOwner(clone);
-                clone.AddComponent(newComponent as Component);
+                var newComponent = component.Clone() as Component;
+                newComponent.SetOwner(clone);
+                clone.AddComponent(newComponent);
             }
         }
     }

@@ -3,7 +3,7 @@ using Project.Game.AeroHokey;
 using Project.Debug;
 using Project.Game.Components.Graph;
 using Project.Game.GameObjects.AgarIo;
-using SFML.Window;
+using Project.Game.Components.Agar;
 using SFML.System;
 using SFML.Graphics;
 namespace Project.Game
@@ -42,12 +42,25 @@ namespace Project.Game
         private void CreateAgar()
         {
             var foodSpawner = new Spawner(currentScene);
-            foodSpawner.Init(new Food(), .05f, 
+            foodSpawner.Init(new Food(), .01f, 
                 obj => obj.position = Program.random.RandomVector(new Vector2i(20, 20), new Vector2i(2540, 1420)), 
-                obj => { if (Food.foodCount > 200) obj?.Destroy(); });
+                obj => { if (Food.foodCount > 100) obj?.Destroy(); });
             for(int i =0;i<10;i++)
-                currentScene.Add(new FoodBall());
+            {
+                var foodBall = new FoodBall();
+                currentScene.Add(foodBall);
+                foodBall.AddComponent(new ComponentObjectClickAbility(foodBall, TakeBall));
+            }
             currentScene.Add(foodSpawner);
+        }
+        private void TakeBall(GameObject obj)
+        {
+            var controller = obj.GetComponent<ComponentPlayerMovemetLogic>();
+            if(controller is null)
+            {
+                obj.RemoveComponent<ComponentBallLogicMovement>();
+                obj.AddComponent(new ComponentPlayerMovemetLogic(obj));
+            }
         }
     }
 }

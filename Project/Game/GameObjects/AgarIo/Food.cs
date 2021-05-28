@@ -15,6 +15,7 @@ namespace Project.Game.GameObjects.AgarIo
             var render = new ComponentRender(this, new CircleShape(10) {Origin = new Vector2f(10,10) });
             render.shape.FillColor = new Color().CreateRandom();
             AddComponent(render);
+            objTimer.Init(1f);
         }
         protected override void OnSceneBind(Scene scene)
         {
@@ -24,7 +25,7 @@ namespace Project.Game.GameObjects.AgarIo
         {
             foodCount--;
         }
-        public virtual object Clone()
+        public override object Clone()
         {
             return new Food();
         }
