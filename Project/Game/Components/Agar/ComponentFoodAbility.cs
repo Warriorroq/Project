@@ -1,34 +1,40 @@
 ﻿using System;
-
+using SFML.Graphics;
 namespace Project.Game.Components.Agar
 {
     public class ComponentFoodAbility : Component
     {
-        public event Action<int> massUpdate;
-        public int TotalMass
+        public event Action<float> massUpdate;
+        public float TotalMass
         {
             get
-                => _startMass + _mass;
+                => _startMass + mass;
             set
             {
                 if (value < 0)
                     return;
-                _mass = value;
-                massUpdate?.Invoke(TotalMass);
+                mass = value;
+                massUpdate?.Invoke(RenderMass);
             }
         }
-        private int _startMass;
-        private int _mass;
-        public ComponentFoodAbility(GameObject owner, int startWeight) : base(owner)
+        public float RenderMass => _startMass + mass * 0.1f;
+        public float mass;
+        private const int _startMass = 10;
+        public ComponentFoodAbility(GameObject owner, float startWeight) : base(owner)
         {
-            _startMass = startWeight;
+            mass = startWeight;
         }            
         public void EatObject(ComponentFoodAbility foodAbility)
         {
+            /*var objDistances = owner.position.DistanceWithOutSqrt(foodAbility.owner.position);
+            var shape = foodAbility.owner.GetComponent<ComponentRender>().shape as CircleShape;
+            var ownerShape = owner.GetComponent<ComponentRender>().shape as CircleShape;*/
             if (TotalMass - foodAbility.TotalMass > foodAbility.TotalMass / 5)
             {
-                TotalMass += foodAbility._mass;
-                foodAbility.owner.Destroy();
+                //if (objDistances < MathF.Pow(ownerShape.Radius - shape.Radius / 2f, 2)) {
+                    TotalMass += foodAbility.mass;
+                    foodAbility.owner.Destroy();
+                //}
             }
         }
     }
