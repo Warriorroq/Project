@@ -12,7 +12,7 @@ namespace Project.Game.GameObjects.AgarIo
             var food = new ComponentFoodAbility(this, 1);
             AddComponent(food);
             AddComponent(new ComponentCollide(this));
-            var render = new ComponentRender(this, new CircleShape(10) {Origin = new Vector2f(10,10) });
+            var render = new ComponentRender(this, new CircleShape(10) {Origin = new Vector2f(10,10), Position = new Vector2f(-100,-100)});
             render.shape.FillColor = new Color().CreateRandom();
             AddComponent(render);
             objTimer.Init(1f);
